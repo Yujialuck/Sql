@@ -1,0 +1,64 @@
+CLAUSE/COMMANDS #CAPITAL WORDS
+name of table
+a list of parameters
+
+CREATE TABLE
+##BUILD TABLES
+SELECT * FROM table
+SELECT name FROM table
+INSERT INTO table() VALUES() #add row
+UPDATE table SET age = 22 WHERE id = 1; ##edit a row
+
+ALTER TABLE table ADD COLUMN new_column TEXT;
+UPDATE table SET new_column = '123' WHERE id=4;
+
+DELETE FROM table WHERE column IS NULL;
+
+
+##QUERIES(查询) (retrieve检索，filter过滤)
+SELECT DISTINCT column FROM table;
+SELECT * FROM table WHERE column > 8;
+SELECT * FROM table WHERE column LIKE 'se_en';
+SELECT * FROM table WHERE name BETWEEN 'A' and 'J' AND genre = 'comedy'; #not including J
+SELECT * FROM table WHERE ORDER BY imdb_rating DESC/ASC LIMIT 3;
+
+#AGGREQATE FUNCTIONS(calculations)
+SELECT COUNT(column) FROM fake_apps WHERE price = 0; #number of rows
+SELECT price, COUNT(*) FROM fake_apps GROUP BY price; # GROUP BY >>> each category
+SELECT category, MAX/MIN/SUM/AVG(downloads) FROM fake_apps GROUP BY category;
+ROUND(AVG(downloads),2) ROUND(avg(downloads))
+
+AVERAGE... GROUP BY
+
+
+##MULTIPLE TABLES
+PRIMARY KEY #关键字,主标键 （SATISFYING 1.NONE NULL,2.EACH VALUE IS UNIQUE）
+FOREIGN KEY #外部键
+
+CREATE TABLE artists (id INTEGER PRIMARY KEY, name TEXT); # id 是artists主键，与另外个table albums 的artist_id（外部键）相关联
+SELECT albums.name, albums.year, artists.name FROM albums, artists # cross join, 一对多
+SELECT * FROM albums JOIN artists ON albums.artist_id = artists.id #inner join 连个table按照condition相连
+OUTER JOIN: 1.LEFT JOIN(ALL LEFT Table JOIN)
+
+
+##SELECT... FROM... WHERE...GROUP BY... ORDER BY...
+SELECT ... FROM ... JOIN ... ON...
+SELECT ... FROM ... WHERE ... IN(SELECT... FROM...WHERE...)
+SELECT...FROM...(SELECT...FROM...)
+
+
+
+col1 - col2
+如果col1或2有null,则结果为NULL
+IFNULL(col2, 0)可将col2里所有null变成0
+
+##LIMIT
+
+SELECT DISTINCT Salary
+FROM Employee
+ORDER BY Salary DESC 
+LIMIT 3, 2    （row从第四行取两行，即第4，第5行）
+
+LIMIT 3 (取前三行，即 LIMIT 0,3) 
+ 
+
